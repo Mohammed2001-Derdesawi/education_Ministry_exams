@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 Route::get('/seed',function (){
-    Artisan::call("artisan storage:link");
-    Artisan::call("artisan migrate:fresh --seed");
+    Artisan::call("storage:link");
+    Artisan::call("migrate:fresh --seed");
 });
 Route::get('/',[UserController::class,'welcome'])->name('welcome');
 

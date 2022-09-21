@@ -79,9 +79,10 @@
 
 
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/all.min.js"></script>
+    <script src="{{asset('/assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/js/all.min.js')}}"></script>
+
 
 </body>
 </html>

@@ -73,8 +73,14 @@
                                     </ul>
                                 </li>
 
-                                 <li class="">
-                                      <a href="#"><i class="fas fa-sign-out-alt"></i><span>تسجيل الخروج</span></a>
+                                 <li class="" style="margin: 10px 0">
+                                    <form action="{{route('admin.logout')}}" method="post">
+
+                                        @csrf
+
+
+                                      <button type="submit" style="border: 0;background: none;color: #fff"><i class="fas fa-sign-out-alt"></i><span>تسجيل الخروج</span></button>
+                                    </form>
                                   </li>
 
                               </ul>

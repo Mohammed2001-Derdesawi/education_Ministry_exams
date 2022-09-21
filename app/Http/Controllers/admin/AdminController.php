@@ -47,5 +47,10 @@ class AdminController extends Controller
     return redirect()->route('admin.login.page')->with('faild','كلمة المرور خاطئة');
  }
 
+ public function logout(){
+    Auth::guard('admin')->logout();
+    return redirect()->route('admin.login.page')->with('success','تم تسجيل الخروج بنجاح');
+ }
+
 
 }

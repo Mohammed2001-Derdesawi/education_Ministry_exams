@@ -27,7 +27,7 @@ class UserController extends Controller
         session()->put('specialization',$request->specialization);
         session()->put("office",$request->office);
         $specialization=findById(['questions.norm.standards'],Specialization::class,['*'],$request->specialization);
-        return view('User.exam',['questions'=>$specialization->questions,'specialization'=>$specialization->specialization]);
+        return view('user.exam',['questions'=>$specialization->questions,'specialization'=>$specialization->specialization]);
     }
 
     public function calculateMarks(ExamRequest $request)

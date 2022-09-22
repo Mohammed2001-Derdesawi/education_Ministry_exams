@@ -60,7 +60,7 @@ class AnalysisController extends Controller
 
 
         }
-         $specialization_mark=DB::select(DB::raw('SELECT SUM(`standards`.`mark`) as all_mark FROM `standards` WHERE `standards`.`norm_id` in (SELECT `norms`.`id` FROM `norms` WHERE `norms`.`field_id` in (SELECT `fields`.`id` FROM `fields` WHERE `fields`.`specialization_id`='.getAuthspecialization('id').'))'));
+         $specialization_mark=DB::select(DB::raw('SELECT SUM(`standards`.`mark`) as all_mark FROM `standards` WHERE `standards`.`norm_id` in (SELECT `norms`.`id` FROM `norms` WHERE `norms`.`field_id` in (SELECT `fields`.`id` FROM `fields` WHERE `fields`.`specialization_id`='.getAuthspecialization("id").'))'));
 
         $user_mark=(int)(($user_mark/$specialization_mark[0]->all_mark)*100);
 

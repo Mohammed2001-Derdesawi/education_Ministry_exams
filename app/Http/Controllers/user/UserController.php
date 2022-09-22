@@ -34,6 +34,7 @@ class UserController extends Controller
     {
         if(!session()->get('name') ||  !session()->get('specialization') || !session()->get('office'))
         return redirect()->route('welcome')->with('warning','الرجاء تسجيل اسمك والتخصص أولا');
+        $specialization_mark=DB::select(DB::raw('SELECT SUM(`standards`.`mark`) as all_mark FROM `standards` WHERE `standards`.`norm_id` in (SELECT `norms`.`id` FROM `norms` WHERE `norms`.`field_id` in (SELECT `fields`.`id` FROM `fields` WHERE `fields`.`specialization_id`='.session()->get('specialization').'))'));
 
         $user=User::create([
             'name'=>session()->get('name'),
@@ -49,7 +50,6 @@ class UserController extends Controller
                 $marks[]=["question_id"=>$key,'standard_id'=>$standard];
             }
         }
-         $specialization_mark=DB::select(DB::raw('SELECT SUM(`standards`.`mark`) as all_mark FROM `standards` WHERE `standards`.`norm_id` in (SELECT `norms`.`id` FROM `norms` WHERE `norms`.`field_id` in (SELECT `fields`.`id` FROM `fields` WHERE `fields`.`specialization_id`='.session()->get('specialization').'))'));
 
 
          $user->marks()->createMany($marks);

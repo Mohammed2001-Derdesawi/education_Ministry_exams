@@ -18,7 +18,9 @@ class NormController extends Controller
      */
     public function index()
     {
-        $norms=Norm::with('field','standards')->search(request()->search)->paginate(15);
+
+        $norms=Norm::with('standards')->join("fields",'fields.id','=','norms.id')->where('fields.specialization_id',getAuthspecialization("id"))->search(request()->search)->paginate(15);
+
         return view('admin.norms.index',['norms'=>$norms]);
 
     }
